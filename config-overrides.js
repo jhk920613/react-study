@@ -9,9 +9,16 @@ const {
 const path = require('path');
 
 const devServerConfig = () => config => {
+
+    console.log(config)
     return {
         ...config,
         historyApiFallback: true,
+        // historyApiFallback: {
+        //     rewrites: [
+        //         { from: /.*/, to: path.posix.join(config.dev.assertPublicPath,'index.html') },
+        //     ],
+        // }
     }
 }
 

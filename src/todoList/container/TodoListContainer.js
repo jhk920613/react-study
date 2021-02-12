@@ -9,7 +9,7 @@ class TodoListContainer extends Component {
     componentDidMount() {
         console.log(window);
         console.log(window.location);
-        console.log('변경테스트3');
+        console.log('변경테스트4');
     }
 
     render() {
