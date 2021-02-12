@@ -8,6 +8,13 @@ const {
 } = require("customize-cra");
 const path = require('path');
 
+const devServerConfig = () => config => {
+    return {
+        ...config,
+        historyApiFallback: true,
+    }
+}
+
 // 사용자 정의 웹팩 설정
 module.exports = {
     webpack: override(
@@ -19,7 +26,8 @@ module.exports = {
     ),
     devServer: overrideDevServer(
         // dev server plugin
-        watchAll()
+        watchAll(),
+        devServerConfig(),
     ),
     output: {
         path: path.join(__dirname, '/src/'),
