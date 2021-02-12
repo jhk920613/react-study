@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Provider } from "mobx-react";
 
-class App extends Component {
+import stores from './stores';
+import TodoListContainer from "./todoList/container/TodoListContainer";
 
-  render() {
-    return (
-        <div className="App">
-          헬로우
-        </div>
-    );
-  }
+import 'semantic-ui-css/semantic.min.css'
 
-}
+const App = () => (
+    <Provider
+        {...stores}
+    >
+        <TodoListContainer />
+    </Provider>
+)
 
 export default App;
