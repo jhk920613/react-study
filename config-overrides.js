@@ -26,7 +26,7 @@ module.exports = {
     ),
     devServer: overrideDevServer(
         // dev server plugin
-        watchAll(),
+        // watchAll(),
         devServerConfig(),
     ),
     output: {
