@@ -6,7 +6,7 @@ import { Layout } from './layout';
 import {Routes as TodoListRoute} from './todoList';
 
 const Routes = () => (
-    <BrowserRouter>
+    <BrowserRouter basename={"react-study"}>
         <Layout>
             <Switch>
                 <TodoListRoute />

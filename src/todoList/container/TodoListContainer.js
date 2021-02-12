@@ -6,6 +6,10 @@ import InputContainer from "./InputContainer";
 @inject('todoListStore')
 @observer
 class TodoListContainer extends Component {
+    componentDidMount() {
+        console.log(window);
+        console.log(window.location);
+    }
 
     render() {
 
