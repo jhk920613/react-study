@@ -3,18 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/plugin-proposal-decorators": "^7.12.13",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.0",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "core-decorators": "^0.20.0",
+    "customize-cra": "^1.0.0",
+    "jquery": "^3.5.1",
+    "mobx": "^5.14.2",
+    "mobx-persist": "^0.4.1",
+    "mobx-react": "^6.1.4",
+    "nanoid": "^3.1.20",
     "react": "^17.0.1",
+    "react-app-rewired": "^2.1.8",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.2",
+    "reactstrap": "^8.9.0",
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -33,6 +46,25 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ]
     ]
   }
 }
