@@ -10,6 +10,7 @@ const path = require('path');
 
 const devServerConfig = () => config => {
 
+    console.log('콘피그');
     console.log(config)
     return {
         ...config,
@@ -34,7 +35,7 @@ module.exports = {
     devServer: overrideDevServer(
         // dev server plugin
         // watchAll(),
-        devServerConfig(),
+        // devServerConfig(),
     ),
     output: {
         path: path.join(__dirname, '/src/'),

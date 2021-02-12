@@ -6,6 +6,13 @@ import InputView from "../view/InputView";
 @observer
 class InputContainer extends Component {
 
+    addTodo = async () => {
+        const { todoListStore } = this.props;
+
+        await todoListStore.addTodo();
+        await todoListStore.onActionSetter('inputValue', '');
+    }
+
     render() {
 
         const {todoListStore} = this.props;
@@ -14,6 +21,7 @@ class InputContainer extends Component {
             <InputView
               inputValue={todoListStore.inputValue}
               onActionSetter={todoListStore.onActionSetter}
+              addTodo={this.addTodo}
             />
         );
     }

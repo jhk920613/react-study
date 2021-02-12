@@ -26,6 +26,7 @@ class Layout extends Component {
               <Header
                   as='h1'
                   color='teal'
+                  className="layout-header"
               >
                   리액트 공부
                   <Header.Subheader><Icon name="bars" onClick={() => this.setVisible()}/>개인적으로 하는 공부</Header.Subheader>
@@ -47,6 +48,7 @@ class Layout extends Component {
                                   as={Link}
                                   to={row.link}
                                   key={nextId('menuItem')}
+                                  onClick={() => this.setVisible(false)}
                               >
                                   <Icon name={row.iconName} />
                                   {row.name}
@@ -56,8 +58,8 @@ class Layout extends Component {
                   </Sidebar>
 
                   <Sidebar.Pusher dimmed={this.state.visible}>
-                      <Segment
-                          style={{height: '90vh', overflowY: 'auto'}}
+                      <div
+                          className="show-area"
                           {...this.props}
                       />
                   </Sidebar.Pusher>

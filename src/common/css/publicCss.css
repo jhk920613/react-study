@@ -1,0 +1,11 @@
+.ui.teal.header.layout-header {
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.show-area {
+    height: 90vh;
+    overflow-y: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+}

@@ -3,25 +3,27 @@ import { observer, inject } from "mobx-react";
 
 import InputContainer from "./InputContainer";
 
+import '../TodoList.css';
+import ListContainer from "./ListContainer";
+
 @inject('todoListStore')
 @observer
 class TodoListContainer extends Component {
-    componentDidMount() {
-        console.log(window);
-        console.log(window.location);
-        console.log('변경테스트4');
-    }
 
     render() {
 
         const {todoListStore} = this.props;
 
         return (
-            <div>
+            <div className="todo-list-template">
+                <div className="title">
+                    할일 리스트
+                </div>
                 <InputContainer
                     inputValue={todoListStore.inputValue}
                     onActionSetter={todoListStore.onActionSetter}
                 />
+                <ListContainer />
             </div>
         );
     }
