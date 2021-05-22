@@ -1,6 +1,8 @@
 import {observable, action, computed} from 'mobx';
+import TodoListRepository from "../repository/TodoListRepository";
 
 class TodoListStore {
+
     @observable inputValue = '';
     @observable _todoList = [];
 
@@ -12,15 +14,6 @@ class TodoListStore {
     @action
     onActionSetter = (name, value) => {
         this[name] = value;
-    }
-
-    @action
-    addTodo = () => {
-        if(this.inputValue.length === 0) {
-            alert('할일을 입력하세요.');
-            return;
-        }
-        this.onActionSetter('_todoList', this.todoList.concat([{text: this.inputValue, checked: false, id: this.todoList.length}]));
     }
 
     @action
@@ -40,6 +33,23 @@ class TodoListStore {
         }
 
         this.onActionSetter('_todoList', todoList);
+    }
+
+    @action
+    findTodoList = async () => {
+        const dataList = await TodoListRepository.findTodoList();
+        await this.onActionSetter('_todoList', dataList);
+    }
+
+    @action
+    addTodo = async () => {
+        if(this.inputValue.length === 0) {
+            alert('할일을 입력하세요.');
+            return;
+        }
+
+        const dataList = await TodoListRepository.registerTodo(this.inputValue);
+        await this.onActionSetter('_todoList', dataList);
     }
 
 }

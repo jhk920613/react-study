@@ -5,10 +5,16 @@ import InputContainer from "./InputContainer";
 
 import '../TodoList.css';
 import ListContainer from "./ListContainer";
+import {Button} from "semantic-ui-react";
 
 @inject('todoListStore')
 @observer
 class TodoListContainer extends Component {
+    async componentDidMount() {
+        const {todoListStore} = this.props;
+
+        await todoListStore.findTodoList();
+    }
 
     render() {
 

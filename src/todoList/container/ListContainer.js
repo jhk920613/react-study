@@ -17,9 +17,9 @@ class ListContainer extends Component {
                     todoListStore.todoList.map((row, index) => (
                         <ListView
                             key={nextId('list')}
-                            text={row.text}
+                            text={row.todoComment}
                             checked={row.checked}
-                            id={row.id}
+                            id={row.seq}
                             onToggle={todoListStore.onToggle}
                             onRemove={todoListStore.onRemove}
                         />
