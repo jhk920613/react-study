@@ -12,6 +12,7 @@
     "bootstrap": "^4.6.0",
     "core-decorators": "^0.20.0",
     "customize-cra": "^1.0.0",
+    "http-proxy-middleware": "^2.0.0",
     "jquery": "^3.5.1",
     "mobx": "^5.14.2",
     "mobx-persist": "^0.4.1",
