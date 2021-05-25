@@ -19,6 +19,17 @@ class TodoListRepository {
         return TodoListModel.toTodoListData(response.data);
     }
 
+    async onChangeStatus(seq) {
+        const response = await axios.put(`${todoListServerUrl}/todoList/${seq}`, {});
+
+        return TodoListModel.toTodoListData(response.data);
+    }
+
+    async removeTodo(seq) {
+        const response = await axios.delete(`${todoListServerUrl}/todoList/${seq}`, {});
+
+        return TodoListModel.toTodoListData(response.data);
+    }
 }
 
 export default new TodoListRepository();

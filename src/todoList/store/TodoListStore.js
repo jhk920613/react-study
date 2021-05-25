@@ -17,25 +17,6 @@ class TodoListStore {
     }
 
     @action
-    onToggle = (id) => {
-        this._todoList[id] = {
-            ...this._todoList[id],
-            checked: !this._todoList[id].checked
-        }
-    }
-
-    @action
-    onRemove = (id) => {
-        let todoList = this.todoList.concat().filter(row => row.id !== id);
-
-        for (let i = 0; i < todoList.length; i++) {
-            todoList[i] = {...todoList[i], id: i};
-        }
-
-        this.onActionSetter('_todoList', todoList);
-    }
-
-    @action
     findTodoList = async () => {
         const dataList = await TodoListRepository.findTodoList();
         await this.onActionSetter('_todoList', dataList);
@@ -49,9 +30,23 @@ class TodoListStore {
         }
 
         const dataList = await TodoListRepository.registerTodo(this.inputValue);
+        await Promise.all([
+            this.onActionSetter('_todoList', dataList),
+            this.onActionSetter('inputValue', ''),
+        ]);
+    }
+
+    @action
+    onChangeStatus = async (seq) => {
+        const dataList = await TodoListRepository.onChangeStatus(seq);
         await this.onActionSetter('_todoList', dataList);
     }
 
+    @action
+    removeTodo = async (seq) => {
+        const dataList = await TodoListRepository.removeTodo(seq);
+        await this.onActionSetter('_todoList', dataList);
+    }
 }
 
 export default TodoListStore;

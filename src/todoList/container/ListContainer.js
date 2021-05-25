@@ -20,8 +20,8 @@ class ListContainer extends Component {
                             text={row.todoComment}
                             checked={row.checked}
                             id={row.seq}
-                            onToggle={todoListStore.onToggle}
-                            onRemove={todoListStore.onRemove}
+                            onToggle={todoListStore.onChangeStatus}
+                            onRemove={todoListStore.removeTodo}
                         />
                     ))
                 }
