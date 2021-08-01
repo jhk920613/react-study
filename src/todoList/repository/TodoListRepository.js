@@ -14,21 +14,21 @@ class TodoListRepository {
     }
 
     async registerTodo(todo) {
-        const response = await axios.post(`${todoListServerUrl}/todoList`, {todoComment: todo});
+        await axios.post(`${todoListServerUrl}/todoList`, {todoComment: todo});
 
-        return TodoListModel.toTodoListData(response.data);
+        return this.findTodoList();
     }
 
     async onChangeStatus(seq) {
-        const response = await axios.put(`${todoListServerUrl}/todoList/${seq}`, {});
+       await axios.put(`${todoListServerUrl}/todoList/${seq}`, {});
 
-        return TodoListModel.toTodoListData(response.data);
+        return this.findTodoList();
     }
 
     async removeTodo(seq) {
-        const response = await axios.delete(`${todoListServerUrl}/todoList/${seq}`, {});
+        await axios.delete(`${todoListServerUrl}/todoList/${seq}`, {});
 
-        return TodoListModel.toTodoListData(response.data);
+        return this.findTodoList();
     }
 }
 
